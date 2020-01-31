@@ -8,6 +8,21 @@ class StudentsController < ApplicationController
   def show
   end
 
+def activate
+
+#find student
+@student = Student.find(params[:id])
+# byebug
+# flip the status of "active"
+  @student.active = !@student.active
+  @student.save
+    # byebug
+    redirect_to student_path(@student)
+end
+
+
+
+
   private
 
     def set_student
